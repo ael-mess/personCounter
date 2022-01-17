@@ -1,0 +1,10 @@
+BasedOnStyle: llvm
+ColumnLimit: 120
+IndentWidth: 4
+PointerAlignment: Left
+AlignConsecutiveAssignments: true
+AlignConsecutiveDeclarations: true
+AlignConsecutiveMacros: true
+AlignConsecutiveBitFields: true
+KeepEmptyLinesAtTheStartOfBlocks: false
+SortIncludes: false
