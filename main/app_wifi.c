@@ -195,6 +195,10 @@ esp_err_t app_wifi_open(char* wifi_ssid, char* wifi_pass, char* ap_ssid, char* a
         wifi_init_softap(ap_ssid, ap_pass);
     }
 
+    if (mode & WIFI_MODE_STA) {
+        wifi_init_sta(wifi_ssid, wifi_pass);
+    }
+
     ESP_ERROR_CHECK(esp_wifi_start());
     ESP_ERROR_CHECK(esp_wifi_set_ps(WIFI_PS_NONE));
 
@@ -207,9 +211,7 @@ esp_err_t app_wifi_open(char* wifi_ssid, char* wifi_pass, char* ap_ssid, char* a
  * @return  retrun connected
  *
  */
-bool app_wifi_isconnected(void) {
-    return m_connected;
-}
+bool app_wifi_isconnected(void) { return m_connected; }
 
 /**
  * @brief   Close WiFi driver.
