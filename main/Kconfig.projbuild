@@ -91,7 +91,7 @@ config ESP_WIFI_CONNECT_IPV6
 
 config ESP_WIFI_AP_SSID
     string "WiFi AP SSID"
-    default "personCounter"
+    default ""
     help
     Set AP SSID (network name) to create or empty for Off.
 
