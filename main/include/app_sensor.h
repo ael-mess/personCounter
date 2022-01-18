@@ -17,7 +17,7 @@ extern "C" {
 #endif
 
 esp_err_t app_sensor_init(void);
-uint8_t   app_sensor_count_get(void);
+uint8_t   app_sensor_get_count(void);
 
 #ifdef __cplusplus
 }
