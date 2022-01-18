@@ -3,5 +3,8 @@
 cmake_minimum_required(VERSION 3.5)
 
 set(PROJECT_VER v0.1)
+
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
 project(personCounter)
+
+include(${PROJECT_SOURCE_DIR}/utils/utils.cmake)
