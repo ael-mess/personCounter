@@ -23,7 +23,8 @@ static const char* TAG = "app-mqtt";
 /*===========================================================================*/
 /* Local definitions.                                                        */
 /*===========================================================================*/
-#define BROKER_URL   CONFIG_BROKER_URL
+#define BROKER_HOST  CONFIG_BROKER_HOST
+#define BROKER_PORT  CONFIG_BROKER_PORT
 #define BROKER_TOPIC CONFIG_BROKER_TOPIC
 #define DEVICE_ID    CONFIG_DEVICE_ID
 #define DEVICE_KEY   CONFIG_DEVICE_KEY
@@ -102,7 +103,8 @@ esp_err_t app_mqtt_start(uint8_t mac[6]) {
     sprintf(name, "%x%x%x%x%x%x", mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
 
     esp_mqtt_client_config_t mqtt_cfg = {
-        .uri       = BROKER_URL,
+        .host      = BROKER_HOST,
+        .port      = BROKER_PORT,
         .client_id = DEVICE_ID,
         .username  = name,
         .password  = DEVICE_KEY,

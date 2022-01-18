@@ -135,11 +135,17 @@ config USE_DUMMY
 endmenu
 
 menu "MQTT Setting"
-config BROKER_URL
-    string "MQTT broker address"
-    default "tcp://192.168.1.168:1883"
+config BROKER_HOST
+    string "MQTT broker connexion host"
+    default "172.20.10.2"
     help
-    Enter MQTT broker address.
+    Enter MQTT broker connexion host.
+
+config BROKER_PORT
+    int "MQTT broker connexion port"
+    default 1883
+    help
+    Enter MQTT broker connexion port.
 
 config DEVICE_ID
     string "MQTT broker device ID"
