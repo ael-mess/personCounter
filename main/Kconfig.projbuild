@@ -1,0 +1,139 @@
+menu "personCounter App"
+
+menu "General Settings"
+config ENABLE_LOGGING
+    bool "Enable Logging"
+    default y
+    help
+    Enable ESP logging on the UART output.
+
+choice BOOTLOADER_LOG_LEVEL
+    bool "Bootloader Log Level"
+    default BOOTLOADER_LOG_LEVEL_ERROR
+    help
+    Select bootloader log level.
+
+config BOOTLOADER_LOG_LEVEL_NONE
+    bool "None log level"
+config BOOTLOADER_LOG_LEVEL_ERROR
+    bool "Error log level"
+config BOOTLOADER_LOG_LEVEL_WARN
+    bool "Warning log level"
+config BOOTLOADER_LOG_LEVEL_INFO
+    bool "Info log level"
+config BOOTLOADER_LOG_LEVEL_DEBUG
+    bool "Debug log level"
+config BOOTLOADER_LOG_LEVEL_VERBOSE
+    bool "Verbose log level"
+endchoice
+
+config BOOTLOADER_LOG_LEVEL
+    int "Bootloader Log Level"
+    default 1
+    range 0 5
+    help
+    Set the bootloader log level.
+
+choice LOG_DEFAULT_LEVEL
+    bool "Application Log Level"
+    default LOG_DEFAULT_LEVEL_INFO
+    help
+    Select application log level.
+
+config LOG_DEFAULT_LEVEL_NONE
+    bool "None log level"
+config LOG_DEFAULT_LEVEL_ERROR
+    bool "Error log level"
+config LOG_DEFAULT_LEVEL_WARN
+    bool "Warning log level"
+config LOG_DEFAULT_LEVEL_INFO
+    bool "Info log level"
+config LOG_DEFAULT_LEVEL_DEBUG
+    bool "Debug log level"
+config LOG_DEFAULT_LEVEL_VERBOSE
+    bool "Verbose log level"
+endchoice
+
+config LOG_DEFAULT_LEVEL
+    int "Application Log Level"
+    default 3
+    range 0 5
+    help
+    Set the application log level.
+endmenu
+
+menu "WiFi Settings"
+config ESP_WIFI_HOST_NAME
+    string "Camera Host Name"
+    default ""
+    help
+    Set the hostname that the camera will advertise over mDNS.
+
+config ESP_WIFI_SSID
+    depends on ESP_PRECONFIGURED_WIFI
+    string "WiFi STA SSID"
+    default ""
+    help
+    Set WiFi SSID (network name) to connect to or empty for Off.
+
+config ESP_WIFI_PASSWORD
+    depends on ESP_PRECONFIGURED_WIFI
+    string "WiFi STA Password"
+    default ""
+    help
+    WiFi Password if WPA/WPA2 or empty if Open.
+    Set WiFi SSID (network name) to connect to or empty for Off.
+
+config ESP_WIFI_CONNECT_IPV6
+    bool "Obtain IPv6 link-local address"
+    default y
+    help
+    By default, program will wait until IPv4 and IPv6 addresses are obtained.
+    Disable this option if the network does not support IPv6.
+
+config ESP_WIFI_AP_SSID
+    string "WiFi AP SSID"
+    default "personCounter"
+    help
+    Set AP SSID (network name) to create or empty for Off.
+
+config ESP_WIFI_AP_PASSWORD
+    string "WiFi AP Password"
+    default ""
+    help
+    Set AP password for WPA2 or empty for Open.
+
+config ESP_WIFI_MAX_STA_CONN
+    int "Maximal STA Connections"
+    default 1
+    help
+	Set max number of the STA connects to AP.
+
+config ESP_WIFI_AP_CHANNEL
+    string "WiFi AP Channel"
+    default ""
+    help
+    Set AP channel for better connection performance.
+
+config ESP_WIFI_AP_IP
+    string "WiFi AP IP Address"
+    default "192.168.4.1"
+    help
+    Set IP address that the ESP will assign to it's AP interface. You can use this IP to connect to the camera after flashing.
+
+config ESP_WIFI_MAXIMUM_RETRY
+    int "Maximum Retry"
+    default 5
+    help
+    Set the Maximum retry to avoid station reconnecting to the AP unlimited when the AP is really inexistent.
+endmenu
+
+menu "Sensors Setting"
+config USE_DUMMY
+    bool "Use dummy data"
+    default y
+    help
+    Select Use dummy data.
+endmenu
+
+endmenu
