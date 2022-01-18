@@ -136,4 +136,30 @@ config USE_DUMMY
     Select Use dummy data.
 endmenu
 
+menu "MQTT Setting"
+config BROKER_URL
+    string "MQTT broker address"
+    default "tcp://192.168.1.168:1883"
+    help
+    Enter MQTT broker address.
+
+config DEVICE_ID
+    string "MQTT broker device ID"
+    default "Default"
+    help
+    Enter MQTT broker device ID.
+
+config DEVICE_KEY
+    string "MQTT broker device key"
+    default "default"
+    help
+    Enter MQTT broker device key.
+
+config BROKER_TOPIC
+    string "MQTT broker topic"
+    default "iot/dev/%s/data"
+    help
+    Enter MQTT broker topic.
+endmenu
+
 endmenu
