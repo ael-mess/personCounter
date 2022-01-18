@@ -152,8 +152,7 @@ esp_err_t app_wifi_open(char* wifi_ssid, char* wifi_pass, char* ap_ssid, char* a
     wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
     ESP_ERROR_CHECK(esp_wifi_init(&cfg));
 
-    RTN_LOGI(TAG, "Getting (STASSID:%s password:%s) - (APSSID:%s password:%s) from NVS", wifi_ssid, wifi_pass, ap_ssid,
-             ap_pass);
+    RTN_LOGI(TAG, "Using (STASSID:%s password:%s) - (APSSID:%s password:%s)", wifi_ssid, wifi_pass, ap_ssid, ap_pass);
 
     wifi_mode_t mode = WIFI_MODE_NULL;
     if (strlen(ap_ssid) && strlen(wifi_ssid)) {
@@ -200,6 +199,16 @@ esp_err_t app_wifi_open(char* wifi_ssid, char* wifi_pass, char* ap_ssid, char* a
     ESP_ERROR_CHECK(esp_wifi_set_ps(WIFI_PS_NONE));
 
     return ESP_OK;
+}
+
+/**
+ * @brief   Connexion state getter.
+ *
+ * @return  retrun connected
+ *
+ */
+bool app_wifi_isconnected(void) {
+    return m_connected;
 }
 
 /**

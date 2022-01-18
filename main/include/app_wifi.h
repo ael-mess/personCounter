@@ -18,6 +18,7 @@ extern "C" {
 
 esp_err_t app_wifi_open(char* wifi_ssid, char* wifi_pass, char* ap_ssid, char* ap_pass);
 void      app_wifi_close(void);
+bool      app_wifi_isconnected(void);
 
 #ifdef __cplusplus
 }

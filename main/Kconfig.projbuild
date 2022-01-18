@@ -70,14 +70,12 @@ config ESP_WIFI_HOST_NAME
     Set the hostname that the camera will advertise over mDNS.
 
 config ESP_WIFI_SSID
-    depends on ESP_PRECONFIGURED_WIFI
     string "WiFi STA SSID"
     default ""
     help
     Set WiFi SSID (network name) to connect to or empty for Off.
 
 config ESP_WIFI_PASSWORD
-    depends on ESP_PRECONFIGURED_WIFI
     string "WiFi STA Password"
     default ""
     help
