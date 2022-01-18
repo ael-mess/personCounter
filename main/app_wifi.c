@@ -214,6 +214,15 @@ esp_err_t app_wifi_open(char* wifi_ssid, char* wifi_pass, char* ap_ssid, char* a
 bool app_wifi_isconnected(void) { return m_connected; }
 
 /**
+ * @brief   MAC address getter.
+ *
+ * @param[out] mac  mac address
+ * @return          retrun msg
+ *
+ */
+esp_err_t app_wifi_getmac(uint8_t mac[6]) { return esp_wifi_get_mac(WIFI_IF_STA, mac); }
+
+/**
  * @brief   Close WiFi driver.
  *
  */
