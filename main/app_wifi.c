@@ -163,7 +163,7 @@ esp_err_t app_wifi_open(char* wifi_ssid, char* wifi_pass, char* ap_ssid, char* a
         mode = WIFI_MODE_STA;
     }
 
-    if (mode == WIFI_MODE_STA || mode == WIFI_MODE_APSTA) {
+    if ((mode != WIFI_MODE_STA) && (mode != WIFI_MODE_APSTA)) {
         RTN_LOGE(TAG, "STA WiFi mode cannot run without configuration");
         return ESP_FAIL;
     }
@@ -172,13 +172,6 @@ esp_err_t app_wifi_open(char* wifi_ssid, char* wifi_pass, char* ap_ssid, char* a
         RTN_LOGW(TAG, "Neither AP or STA have been configured. WiFi will be off");
         return ESP_FAIL;
     }
-
-#if CONFIG_ENABLE_LOGGING
-    if (mode != WIFI_MODE_APSTA && mode != WIFI_MODE_AP) {
-        RTN_LOGW(TAG, "AP WiFi mode not configured: This version cannot be "
-                      "user in production");
-    }
-#endif
 
     ESP_ERROR_CHECK(esp_wifi_set_storage(WIFI_STORAGE_RAM));
     ESP_ERROR_CHECK(esp_wifi_set_mode(mode));
