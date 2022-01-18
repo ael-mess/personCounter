@@ -64,10 +64,10 @@ endmenu
 
 menu "WiFi Settings"
 config ESP_WIFI_HOST_NAME
-    string "Camera Host Name"
+    string "WIFI Host Name"
     default ""
     help
-    Set the hostname that the camera will advertise over mDNS.
+    Set the hostname that the WiFi will advertise over mDNS.
 
 config ESP_WIFI_SSID
     string "WiFi STA SSID"
@@ -117,7 +117,7 @@ config ESP_WIFI_AP_IP
     string "WiFi AP IP Address"
     default "192.168.4.1"
     help
-    Set IP address that the ESP will assign to it's AP interface. You can use this IP to connect to the camera after flashing.
+    Set IP address that the ESP will assign to it's AP interface.
 
 config ESP_WIFI_MAXIMUM_RETRY
     int "Maximum Retry"

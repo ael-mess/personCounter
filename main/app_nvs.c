@@ -54,12 +54,11 @@ esp_err_t app_nvs_set_wifi(char* ssid, char* pass) {
 
     esp_err_t ret1 = nvs_set_str(handle, WIFI_STA_SSID_KEY, ssid);
     esp_err_t ret2 = nvs_set_str(handle, WIFI_STA_PASS_KEY, pass);
-    esp_err_t ret3 = nvs_set_str(handle, CAMERA_PARTID_KEY, part);
 
     ret = nvs_commit(handle);
     nvs_close(handle);
 
-    if ((ret == ESP_OK) && (ret1 == ESP_OK) && (ret2 == ESP_OK) && (ret3 == ESP_OK)) {
+    if ((ret == ESP_OK) && (ret1 == ESP_OK) && (ret2 == ESP_OK)) {
         RTN_LOGI(TAG, "NVS data set successfully");
         return ESP_OK;
     } else {
@@ -204,7 +203,7 @@ esp_err_t app_nvs_init(char* wifi_ssid, char* wifi_pass, char* ap_ssid, char* ap
     nvs_close(handle);
 
     if ((ret1 == ESP_OK) && (ret2 == ESP_OK)) {
-        RTN_LOGI(TAG, "NVS data recovered successfully: %s-%s-%s", part_id, wifi_ssid, wifi_pass);
+        RTN_LOGI(TAG, "NVS data recovered successfully: %s-%s", wifi_ssid, wifi_pass);
         return ESP_OK;
     } else {
         RTN_LOGI(TAG, "NVS data not found");
